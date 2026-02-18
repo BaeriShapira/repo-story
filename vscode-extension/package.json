@@ -1,0 +1,77 @@
+{
+  "name": "repo-story-preview",
+  "displayName": "RepoStory Preview",
+  "description": "Live preview panel for RepoStory animated HTML walkthroughs",
+  "version": "0.1.0",
+  "publisher": "BaeriShapira",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BaeriShapira/repo-story"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Visualization"
+  ],
+  "keywords": [
+    "repo-story",
+    "preview",
+    "html",
+    "mockup",
+    "demo",
+    "walkthrough"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "repoStory.openPreview",
+        "title": "RepoStory: Open Preview",
+        "icon": "$(device-mobile)"
+      },
+      {
+        "command": "repoStory.refresh",
+        "title": "RepoStory: Refresh Preview",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "repoStory.openInBrowser",
+        "title": "RepoStory: Open in Browser",
+        "icon": "$(link-external)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "repoStory.refresh",
+          "when": "activeWebviewPanelId == repoStoryPreview",
+          "group": "navigation"
+        },
+        {
+          "command": "repoStory.openInBrowser",
+          "when": "activeWebviewPanelId == repoStoryPreview",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "repoStory.refresh",
+          "when": "activeWebviewPanelId == repoStoryPreview"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.0.0"
+  }
+}

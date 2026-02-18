@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build output
+vscode-extension/out/
+
+# VS Code extension package
+*.vsix
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Session artifacts (generated during skill execution)
+.repo-story-feedback.jsonl
+.repo-story-studio.pid
+repo-story-studio.mjs

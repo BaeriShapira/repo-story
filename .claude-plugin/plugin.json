@@ -1,0 +1,25 @@
+{
+  "name": "repo-story",
+  "version": "1.0.0",
+  "description": "Generate animated HTML demo walkthroughs of your app by analyzing the codebase. Creates a phone mockup animation showing key screens and user flows.",
+  "author": {
+    "name": "Jacob",
+    "url": "https://github.com/BaeriShapira"
+  },
+  "homepage": "https://github.com/BaeriShapira/repo-story",
+  "repository": "https://github.com/BaeriShapira/repo-story",
+  "license": "MIT",
+  "keywords": [
+    "demo",
+    "walkthrough",
+    "animation",
+    "showcase",
+    "phone-mockup",
+    "app-preview",
+    "marketing",
+    "investor-deck"
+  ],
+  "engines": {
+    "claude-code": ">=1.0.0"
+  }
+}
