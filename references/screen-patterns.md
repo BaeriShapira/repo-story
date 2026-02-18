@@ -1,6 +1,7 @@
 # Screen Patterns Catalog
 
-Reference catalog of screen archetypes. Use these as starting points and adapt with the project's actual colors, content, and UI patterns.
+> **IMPORTANT: These are structural layout references only — NOT design templates.**
+> The visual design (button shapes, card styles, typography, colors, badges, spacing) must come from the project's actual component code. Use these archetypes ONLY to understand where to position elements (header, content, navigation). Never copy the visual styling from these snippets — always read the real code and replicate its actual design language.
 
 ---
 

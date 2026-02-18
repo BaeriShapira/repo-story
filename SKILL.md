@@ -29,10 +29,19 @@ Read `references/discovery-guide.md` and follow its steps:
 1. **Read `package.json`** — identify framework, styling library, auth, database, AI features
 2. **Extract color palette** — search CSS/theme files following the priority list in the guide. Map colors to roles: primary, accent, success, error, background, text
 3. **Map all pages/routes** — glob for page files matching the detected framework's pattern. Build a route list with inferred descriptions
-4. **Catalog components** — glob component directories, categorize them, then read 3-5 representative components to understand card style, button style, typography, spacing, icons, and any distinctive UI elements
-5. **Identify user flows** — based on routes and components, draft 2-3 suggested user journeys (5-8 screens each)
+4. **Catalog components** — glob component directories and categorize them (ui primitives, page-level, layout, shared)
+5. **Build a design style guide** — read 5-10 representative components (buttons, cards, inputs, badges, navigation, modals, distinctive features) and document the project's actual visual patterns:
+   - **Buttons:** exact shape (rounded-full? rounded-lg?), padding, sizes, variants (primary, outline, ghost)
+   - **Cards:** border-radius, shadow style, padding, background, border
+   - **Badges/pills:** shape, background colors, font size, padding
+   - **Typography:** heading sizes/weights, body text size, font family, line-height
+   - **Spacing:** gap patterns, padding patterns, margin conventions
+   - **Icons:** which icon library (Lucide, Heroicons, etc.), icon sizes, stroke width
+   - **Distinctive UI elements:** anything unique to the project (compatibility rings, signal bars, gradient overlays, swipe gestures, progress indicators, etc.)
+   - **Layout patterns:** header style, bottom navigation, card arrangements, list styles
+6. **Identify user flows** — based on routes and components, draft 2-3 suggested user journeys (5-8 screens each)
 
-**Output of this phase:** A structured discovery summary you will present to the user.
+**Output of this phase:** A structured discovery summary including the design style guide. This style guide is critical — it ensures Phase 3 uses the project's actual design language, not generic patterns.
 
 ---
 
@@ -89,21 +98,29 @@ Wait for user confirmation before proceeding.
 
 ## Phase 3: Screen Design
 
-**Goal:** Design each screen's content by reading actual components and adapting archetypes.
+**Goal:** Design each screen by faithfully representing the project's actual UI — not by using generic templates.
 
-Read `references/screen-patterns.md` for the archetype catalog.
+Read `references/screen-patterns.md` for structural layout reference only (where to place headers, content areas, navigation). The visual design must come from the project's actual code.
+
+**Critical rule:** The generated screens must look like the actual app, not like generic mockups. A user seeing the demo should recognize their own app's design language.
 
 For each screen in the confirmed plan:
 
-1. **Read the actual component code** for that screen. For a swipe feed screen, read the feed component, card component, action buttons, etc.
+1. **Read ALL relevant component files** for that screen. For a swipe feed screen, read the page component, feed component, card component, action buttons, navigation bar, and any shared UI primitives they import. Read more files rather than fewer — you need a complete picture of the actual UI.
 
-2. **Pick the closest archetype** from the catalog and adapt it:
-   - Use the project's actual color palette (via CSS variables)
+2. **Replicate the actual design** by studying the component code:
+   - **Extract the real visual patterns** from the code: Tailwind classes, CSS modules, inline styles, styled-components — convert these to equivalent inline styles for the demo HTML
+   - **Match exact button shapes** — if the project uses `rounded-full` (pill buttons), use `border-radius: 9999px`. If it uses `rounded-lg`, use `border-radius: 8px`. Don't guess — read the code.
+   - **Match exact card styles** — same border-radius, shadow, padding, and background as the real components
+   - **Match badge/pill styles** — same colors, shapes, and text sizes as the real code
+   - **Reproduce distinctive UI elements** exactly as they appear — compatibility rings, signal bars, gradient overlays, match percentages, action button layouts, etc.
+   - **Use the project's actual layout structure** — if the real screen has a sticky header + scrollable content + bottom nav, build it that way
+   - Use the archetype from `screen-patterns.md` ONLY for structural scaffolding (general positioning). All visual styling must come from the actual code.
    - Use domain-realistic placeholder content (real-looking job titles, company names, user names — NOT "Lorem ipsum")
-   - Include distinctive UI elements found in the codebase (compatibility rings, signal bars, pill badges, etc.)
-   - Match the general layout: header position, card placement, button arrangement, navigation structure
 
-3. **Write a caption** for each screen in the user's chosen language. Captions should:
+3. **Use the design style guide from Phase 1** — refer to the documented button styles, card styles, typography, spacing, and distinctive elements. Every screen should feel consistent with the project's design system.
+
+4. **Write a caption** for each screen in the user's chosen language. Captions should:
    - Be 1-2 sentences, concise and engaging
    - Match the target audience tone (casual for users, impressive for investors, professional for app store)
    - Use `<strong>` to highlight the key feature or value proposition
@@ -245,7 +262,7 @@ Simply confirm and close:
 
 3. **Always use the project's actual colors.** Extract them from the codebase — never use hardcoded defaults.
 
-4. **Keep screens visually simple.** These are stylized representations, not pixel-perfect replicas. Capture the essence and layout, not every detail.
+4. **Faithfully represent the project's design.** Screens should look like the actual app — same button shapes, card styles, badges, colors, and layout patterns. Read the real component code and translate its visual style to inline CSS. Use the design style guide from Phase 1 for consistency.
 
 5. **Respect RTL.** If the user chooses Hebrew, Arabic, or another RTL language, set `dir="rtl"` and ensure layout flows correctly.
 
